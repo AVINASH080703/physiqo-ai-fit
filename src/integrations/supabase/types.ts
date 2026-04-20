@@ -14,7 +14,123 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      body_metrics: {
+        Row: {
+          arm_cm: number | null
+          chest_cm: number | null
+          created_at: string
+          hips_cm: number | null
+          id: string
+          logged_at: string
+          notes: string | null
+          user_id: string
+          waist_cm: number | null
+          weight_kg: number
+        }
+        Insert: {
+          arm_cm?: number | null
+          chest_cm?: number | null
+          created_at?: string
+          hips_cm?: number | null
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          user_id: string
+          waist_cm?: number | null
+          weight_kg: number
+        }
+        Update: {
+          arm_cm?: number | null
+          chest_cm?: number | null
+          created_at?: string
+          hips_cm?: number | null
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          user_id?: string
+          waist_cm?: number | null
+          weight_kg?: number
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          activity_level: Database["public"]["Enums"]["activity_level"] | null
+          age: number | null
+          created_at: string
+          full_name: string | null
+          gender: Database["public"]["Enums"]["gender_type"] | null
+          goal: Database["public"]["Enums"]["fitness_goal"] | null
+          height_cm: number | null
+          id: string
+          updated_at: string
+          user_id: string
+          weight_kg: number | null
+        }
+        Insert: {
+          activity_level?: Database["public"]["Enums"]["activity_level"] | null
+          age?: number | null
+          created_at?: string
+          full_name?: string | null
+          gender?: Database["public"]["Enums"]["gender_type"] | null
+          goal?: Database["public"]["Enums"]["fitness_goal"] | null
+          height_cm?: number | null
+          id?: string
+          updated_at?: string
+          user_id: string
+          weight_kg?: number | null
+        }
+        Update: {
+          activity_level?: Database["public"]["Enums"]["activity_level"] | null
+          age?: number | null
+          created_at?: string
+          full_name?: string | null
+          gender?: Database["public"]["Enums"]["gender_type"] | null
+          goal?: Database["public"]["Enums"]["fitness_goal"] | null
+          height_cm?: number | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
+      workout_plans: {
+        Row: {
+          activity_level: Database["public"]["Enums"]["activity_level"]
+          created_at: string
+          goal: Database["public"]["Enums"]["fitness_goal"]
+          id: string
+          is_active: boolean
+          name: string
+          plan: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          activity_level: Database["public"]["Enums"]["activity_level"]
+          created_at?: string
+          goal: Database["public"]["Enums"]["fitness_goal"]
+          id?: string
+          is_active?: boolean
+          name: string
+          plan: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          activity_level?: Database["public"]["Enums"]["activity_level"]
+          created_at?: string
+          goal?: Database["public"]["Enums"]["fitness_goal"]
+          id?: string
+          is_active?: boolean
+          name?: string
+          plan?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +139,9 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      activity_level: "beginner" | "intermediate" | "advanced"
+      fitness_goal: "fat_loss" | "muscle_gain" | "maintenance"
+      gender_type: "male" | "female" | "other"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +268,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      activity_level: ["beginner", "intermediate", "advanced"],
+      fitness_goal: ["fat_loss", "muscle_gain", "maintenance"],
+      gender_type: ["male", "female", "other"],
+    },
   },
 } as const
