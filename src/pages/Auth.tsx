@@ -48,7 +48,7 @@ export default function Auth() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = loginSchema.safeParse({ email: form.email, password: form.password });
-    if (!parsed.success) { toast.error(parsed.error.errors[0].message); return; }
+    if (!parsed.success) { toast.error(parsed.error.issues[0].message); return; }
     setSubmitting(true);
     const { error } = await supabase.auth.signInWithPassword(parsed.data);
     setSubmitting(false);
@@ -60,7 +60,7 @@ export default function Auth() {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = signupSchema.safeParse(form);
-    if (!parsed.success) { toast.error(parsed.error.errors[0].message); return; }
+    if (!parsed.success) { toast.error(parsed.error.issues[0].message); return; }
     setSubmitting(true);
     const d = parsed.data;
     const { error } = await supabase.auth.signUp({

@@ -96,7 +96,7 @@ export default function Dashboard() {
     e.preventDefault();
     if (!user) return;
     const parsed = metricSchema.safeParse(form);
-    if (!parsed.success) { toast.error(parsed.error.errors[0].message); return; }
+    if (!parsed.success) { toast.error(parsed.error.issues[0].message); return; }
     setSubmitting(true);
     const d = parsed.data;
     const payload = {
