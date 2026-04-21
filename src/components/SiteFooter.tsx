@@ -1,4 +1,4 @@
-import { Dumbbell } from "lucide-react";
+import logo from "@/assets/physiqo-logo.jpg";
 
 export function SiteFooter() {
   return (
@@ -6,9 +6,7 @@ export function SiteFooter() {
       <div className="container py-12 grid gap-8 md:grid-cols-4">
         <div className="space-y-3">
           <div className="flex items-center gap-2 font-display font-bold">
-            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-brand text-brand-foreground">
-              <Dumbbell className="h-4 w-4" strokeWidth={2.5} />
-            </span>
+            <img src={logo} alt="Physiqo logo" className="h-7 w-7 rounded-md object-cover" />
             Physiqo
           </div>
           <p className="text-sm text-muted-foreground max-w-xs">
