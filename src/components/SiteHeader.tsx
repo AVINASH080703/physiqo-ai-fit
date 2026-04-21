@@ -37,6 +37,9 @@ export function SiteHeader() {
           {user && pathname !== "/dashboard" && (
             <Link to="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
           )}
+          {user && pathname !== "/admin" && (
+            <Link to="/admin" className="hover:text-foreground transition-colors">Data</Link>
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
