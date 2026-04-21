@@ -1,10 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Dumbbell, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import logo from "@/assets/physiqo-logo.jpg";
 
 export function SiteHeader() {
   const { user } = useAuth();
@@ -20,10 +21,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
-            <Dumbbell className="h-4.5 w-4.5" strokeWidth={2.5} />
-          </span>
+        <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg" aria-label="Physiqo home">
+          <img src={logo} alt="Physiqo logo" className="h-9 w-9 rounded-lg object-cover" />
           Physiqo
         </Link>
 
