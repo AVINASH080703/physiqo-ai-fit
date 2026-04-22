@@ -140,9 +140,9 @@ export default function Auth() {
                   <Field label="Password"><Input type="password" required value={form.password} onChange={(e) => update("password", e.target.value)} /></Field>
                 </div>
                 <div className="grid grid-cols-3 gap-3">
-                  <Field label="Age"><Input type="number" required value={form.age} onChange={(e) => update("age", e.target.value)} /></Field>
-                  <Field label="Height (cm)"><Input type="number" required value={form.height_cm} onChange={(e) => update("height_cm", e.target.value)} /></Field>
-                  <Field label="Weight (kg)"><Input type="number" required value={form.weight_kg} onChange={(e) => update("weight_kg", e.target.value)} /></Field>
+                  <Field label="Age"><Input type="text" inputMode="numeric" required value={form.age} onChange={(e) => update("age", e.target.value)} placeholder="25" /></Field>
+                  <Field label="Height (cm)"><Input type="text" inputMode="numeric" required value={form.height_cm} onChange={(e) => update("height_cm", e.target.value)} placeholder="175" /></Field>
+                  <Field label="Weight (kg)"><Input type="text" inputMode="numeric" required value={form.weight_kg} onChange={(e) => update("weight_kg", e.target.value)} placeholder="70" /></Field>
                 </div>
                 <Field label="Gender">
                   <Select value={form.gender} onValueChange={(v) => update("gender", v)}>
