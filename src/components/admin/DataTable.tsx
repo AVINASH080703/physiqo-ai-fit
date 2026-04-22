@@ -104,7 +104,11 @@ export function DataTable<T extends TableName>({
             ))}
             {isError && (
               <TableRow><TableCell colSpan={columns.length + 1} className="text-center text-destructive py-8">
-                {(error as Error)?.message || "Failed to load."}
+                {(() => {
+                  // Log full error for developers; show generic message to users.
+                  if (error) console.error("[DataTable] load error", error);
+                  return "Failed to load records. Please try again.";
+                })()}
               </TableCell></TableRow>
             )}
             {!isLoading && !isError && data?.rows.length === 0 && (
