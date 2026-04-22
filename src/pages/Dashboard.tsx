@@ -145,7 +145,11 @@ export default function Dashboard() {
             <p className="text-sm text-muted-foreground">Welcome back</p>
             <h1 className="font-display text-3xl font-bold">{profile?.full_name || "Athlete"} 👋</h1>
           </div>
-          <Button onClick={regeneratePlan} variant="brand"><Sparkles className="h-4 w-4" /> Regenerate plan</Button>
+          <div className="flex flex-wrap gap-2">
+            <Button onClick={() => nav("/nutrition")} variant="outline" size="sm">🥗 Nutrition</Button>
+            <Button onClick={() => nav("/exercises")} variant="outline" size="sm">💪 Exercises</Button>
+            <Button onClick={regeneratePlan} variant="brand"><Sparkles className="h-4 w-4" /> Regenerate plan</Button>
+          </div>
         </div>
 
         {/* Stat cards */}
