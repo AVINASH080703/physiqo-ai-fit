@@ -7,6 +7,7 @@ import {
   getAll, getById, createRecord, updateRecord, deleteRecord,
   ListOptions, Row, InsertRow, UpdateRow, TableName,
 } from "@/services/db";
+import { friendlyDbError } from "@/lib/dbErrors";
 
 const key = (table: TableName, ...rest: unknown[]) => ["db", table, ...rest];
 
@@ -34,7 +35,7 @@ export function useCreate<T extends TableName>(table: T) {
       qc.invalidateQueries({ queryKey: key(table) });
       toast.success("Record created");
     },
-    onError: (e: Error) => toast.error(e.message),
+    onError: (e) => toast.error(friendlyDbError(e, "Could not create record.")),
   });
 }
 
@@ -47,7 +48,7 @@ export function useUpdate<T extends TableName>(table: T) {
       qc.setQueryData(key(table, "one", (row as { id: string }).id), row);
       toast.success("Record updated");
     },
-    onError: (e: Error) => toast.error(e.message),
+    onError: (e) => toast.error(friendlyDbError(e, "Could not update record.")),
   });
 }
 
@@ -59,7 +60,7 @@ export function useRemove<T extends TableName>(table: T) {
       qc.invalidateQueries({ queryKey: key(table) });
       toast.success("Deleted");
     },
-    onError: (e: Error) => toast.error(e.message),
+    onError: (e) => toast.error(friendlyDbError(e, "Could not delete record.")),
   });
 }
 
