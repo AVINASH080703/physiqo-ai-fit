@@ -37,6 +37,12 @@ export function SiteHeader() {
           {user && pathname !== "/dashboard" && (
             <Link to="/dashboard" className="hover:text-foreground transition-colors">Dashboard</Link>
           )}
+          {user && pathname !== "/nutrition" && (
+            <Link to="/nutrition" className="hover:text-foreground transition-colors">Nutrition</Link>
+          )}
+          {user && pathname !== "/exercises" && (
+            <Link to="/exercises" className="hover:text-foreground transition-colors">Exercises</Link>
+          )}
           {user && pathname !== "/admin" && (
             <Link to="/admin" className="hover:text-foreground transition-colors">Data</Link>
           )}
