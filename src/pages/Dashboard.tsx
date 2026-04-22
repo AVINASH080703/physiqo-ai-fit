@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
-import { Activity, Target, Flame, TrendingUp, Plus, Dumbbell, Sparkles } from "lucide-react";
+import { Activity, Target, Flame, TrendingUp, Plus, Sparkles } from "lucide-react";
+import logo from "@/assets/physiqo-logo.jpg";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -173,7 +174,7 @@ export default function Dashboard() {
               <>
                 <div className="rounded-2xl bg-card border border-border p-6 shadow-soft">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand/10 text-brand"><Dumbbell className="h-5 w-5" /></span>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg overflow-hidden"><img src={logo} alt="Physiqo" className="h-full w-full object-cover" /></span>
                     <h2 className="font-display font-bold text-xl">{plan.name}</h2>
                   </div>
                   <p className="text-sm text-muted-foreground">{plan.summary}</p>

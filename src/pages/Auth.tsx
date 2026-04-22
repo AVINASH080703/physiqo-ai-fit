@@ -8,8 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
-import { Dumbbell, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
+import logo from "@/assets/physiqo-logo.jpg";
 
 const signupSchema = z.object({
   full_name: z.string().trim().min(1, "Name is required").max(100),
@@ -89,9 +90,7 @@ export default function Auth() {
     <div className="min-h-screen bg-hero flex flex-col">
       <header className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-display font-bold">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
-            <Dumbbell className="h-4.5 w-4.5" strokeWidth={2.5} />
-          </span>
+          <img src={logo} alt="Physiqo logo" className="h-9 w-9 rounded-lg object-cover" />
           Physiqo
         </Link>
         <div className="flex items-center gap-2">
