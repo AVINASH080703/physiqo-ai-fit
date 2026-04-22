@@ -53,6 +53,262 @@ export type Database = {
         }
         Relationships: []
       }
+      exercise_logs: {
+        Row: {
+          calories_burned: number | null
+          created_at: string
+          custom_name: string | null
+          duration_min: number | null
+          exercise_id: string | null
+          id: string
+          logged_at: string
+          notes: string | null
+          reps: number | null
+          sets: number | null
+          user_id: string
+          weight_kg: number | null
+        }
+        Insert: {
+          calories_burned?: number | null
+          created_at?: string
+          custom_name?: string | null
+          duration_min?: number | null
+          exercise_id?: string | null
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          reps?: number | null
+          sets?: number | null
+          user_id: string
+          weight_kg?: number | null
+        }
+        Update: {
+          calories_burned?: number | null
+          created_at?: string
+          custom_name?: string | null
+          duration_min?: number | null
+          exercise_id?: string | null
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          reps?: number | null
+          sets?: number | null
+          user_id?: string
+          weight_kg?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exercise_logs_exercise_id_fkey"
+            columns: ["exercise_id"]
+            isOneToOne: false
+            referencedRelation: "exercises"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exercises: {
+        Row: {
+          category: Database["public"]["Enums"]["exercise_category"]
+          created_at: string
+          difficulty: string | null
+          equipment: string | null
+          id: string
+          instructions: string | null
+          met_value: number
+          muscle_group: string | null
+          name: string
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["exercise_category"]
+          created_at?: string
+          difficulty?: string | null
+          equipment?: string | null
+          id?: string
+          instructions?: string | null
+          met_value?: number
+          muscle_group?: string | null
+          name: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["exercise_category"]
+          created_at?: string
+          difficulty?: string | null
+          equipment?: string | null
+          id?: string
+          instructions?: string | null
+          met_value?: number
+          muscle_group?: string | null
+          name?: string
+        }
+        Relationships: []
+      }
+      food_items: {
+        Row: {
+          calcium_mg: number
+          calories: number
+          carbs_g: number
+          category: Database["public"]["Enums"]["diet_category"]
+          created_at: string
+          fat_g: number
+          fiber_g: number
+          id: string
+          iron_mg: number
+          magnesium_mg: number
+          name: string
+          potassium_mg: number
+          primary_nutrient: string | null
+          protein_g: number
+          serving_size_g: number
+          sodium_mg: number
+        }
+        Insert: {
+          calcium_mg?: number
+          calories?: number
+          carbs_g?: number
+          category: Database["public"]["Enums"]["diet_category"]
+          created_at?: string
+          fat_g?: number
+          fiber_g?: number
+          id?: string
+          iron_mg?: number
+          magnesium_mg?: number
+          name: string
+          potassium_mg?: number
+          primary_nutrient?: string | null
+          protein_g?: number
+          serving_size_g?: number
+          sodium_mg?: number
+        }
+        Update: {
+          calcium_mg?: number
+          calories?: number
+          carbs_g?: number
+          category?: Database["public"]["Enums"]["diet_category"]
+          created_at?: string
+          fat_g?: number
+          fiber_g?: number
+          id?: string
+          iron_mg?: number
+          magnesium_mg?: number
+          name?: string
+          potassium_mg?: number
+          primary_nutrient?: string | null
+          protein_g?: number
+          serving_size_g?: number
+          sodium_mg?: number
+        }
+        Relationships: []
+      }
+      nutrition_logs: {
+        Row: {
+          calories: number
+          carbs_g: number
+          created_at: string
+          custom_name: string | null
+          fat_g: number
+          food_item_id: string | null
+          id: string
+          logged_at: string
+          meal: Database["public"]["Enums"]["meal_type"]
+          protein_g: number
+          servings: number
+          user_id: string
+        }
+        Insert: {
+          calories?: number
+          carbs_g?: number
+          created_at?: string
+          custom_name?: string | null
+          fat_g?: number
+          food_item_id?: string | null
+          id?: string
+          logged_at?: string
+          meal?: Database["public"]["Enums"]["meal_type"]
+          protein_g?: number
+          servings?: number
+          user_id: string
+        }
+        Update: {
+          calories?: number
+          carbs_g?: number
+          created_at?: string
+          custom_name?: string | null
+          fat_g?: number
+          food_item_id?: string | null
+          id?: string
+          logged_at?: string
+          meal?: Database["public"]["Enums"]["meal_type"]
+          protein_g?: number
+          servings?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nutrition_logs_food_item_id_fkey"
+            columns: ["food_item_id"]
+            isOneToOne: false
+            referencedRelation: "food_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      nutrition_targets: {
+        Row: {
+          calcium_mg: number
+          calories: number
+          carbs_g: number
+          created_at: string
+          fat_g: number
+          fiber_g: number
+          id: string
+          iron_mg: number
+          magnesium_mg: number
+          notes: string | null
+          potassium_mg: number
+          protein_g: number
+          source: string
+          updated_at: string
+          user_id: string
+          water_ml: number
+        }
+        Insert: {
+          calcium_mg?: number
+          calories?: number
+          carbs_g?: number
+          created_at?: string
+          fat_g?: number
+          fiber_g?: number
+          id?: string
+          iron_mg?: number
+          magnesium_mg?: number
+          notes?: string | null
+          potassium_mg?: number
+          protein_g?: number
+          source?: string
+          updated_at?: string
+          user_id: string
+          water_ml?: number
+        }
+        Update: {
+          calcium_mg?: number
+          calories?: number
+          carbs_g?: number
+          created_at?: string
+          fat_g?: number
+          fiber_g?: number
+          id?: string
+          iron_mg?: number
+          magnesium_mg?: number
+          notes?: string | null
+          potassium_mg?: number
+          protein_g?: number
+          source?: string
+          updated_at?: string
+          user_id?: string
+          water_ml?: number
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           activity_level: Database["public"]["Enums"]["activity_level"] | null
@@ -92,6 +348,60 @@ export type Database = {
           updated_at?: string
           user_id?: string
           weight_kg?: number | null
+        }
+        Relationships: []
+      }
+      user_preferences: {
+        Row: {
+          created_at: string
+          diet_preference: Database["public"]["Enums"]["diet_preference"]
+          id: string
+          unit_system: Database["public"]["Enums"]["unit_system"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          diet_preference?: Database["public"]["Enums"]["diet_preference"]
+          id?: string
+          unit_system?: Database["public"]["Enums"]["unit_system"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          diet_preference?: Database["public"]["Enums"]["diet_preference"]
+          id?: string
+          unit_system?: Database["public"]["Enums"]["unit_system"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      water_logs: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          logged_at: string
+          unit: Database["public"]["Enums"]["water_unit"]
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          logged_at?: string
+          unit?: Database["public"]["Enums"]["water_unit"]
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          logged_at?: string
+          unit?: Database["public"]["Enums"]["water_unit"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -140,8 +450,23 @@ export type Database = {
     }
     Enums: {
       activity_level: "beginner" | "intermediate" | "advanced"
+      diet_category:
+        | "veg"
+        | "non_veg"
+        | "vegan"
+        | "dairy"
+        | "grain"
+        | "fruit"
+        | "nut_seed"
+        | "beverage"
+        | "supplement"
+      diet_preference: "veg" | "non_veg" | "vegan"
+      exercise_category: "strength" | "cardio" | "mobility" | "hiit" | "sports"
       fitness_goal: "fat_loss" | "muscle_gain" | "maintenance"
       gender_type: "male" | "female" | "other"
+      meal_type: "breakfast" | "lunch" | "dinner" | "snack"
+      unit_system: "metric" | "imperial"
+      water_unit: "ml" | "oz"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -270,8 +595,24 @@ export const Constants = {
   public: {
     Enums: {
       activity_level: ["beginner", "intermediate", "advanced"],
+      diet_category: [
+        "veg",
+        "non_veg",
+        "vegan",
+        "dairy",
+        "grain",
+        "fruit",
+        "nut_seed",
+        "beverage",
+        "supplement",
+      ],
+      diet_preference: ["veg", "non_veg", "vegan"],
+      exercise_category: ["strength", "cardio", "mobility", "hiit", "sports"],
       fitness_goal: ["fat_loss", "muscle_gain", "maintenance"],
       gender_type: ["male", "female", "other"],
+      meal_type: ["breakfast", "lunch", "dinner", "snack"],
+      unit_system: ["metric", "imperial"],
+      water_unit: ["ml", "oz"],
     },
   },
 } as const

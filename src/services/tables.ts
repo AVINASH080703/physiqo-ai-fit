@@ -6,26 +6,21 @@ import type { Database } from "@/integrations/supabase/types";
 
 type Tables = Database["public"]["Tables"];
 
-export const profilesService = {
-  list: (opts?: ListOptions<"profiles">) => getAll("profiles", opts),
-  get: (id: string) => getById("profiles", id),
-  create: (v: Tables["profiles"]["Insert"]) => createRecord("profiles", v),
-  update: (id: string, v: Tables["profiles"]["Update"]) => updateRecord("profiles", id, v),
-  remove: (id: string) => deleteRecord("profiles", id),
-};
+const make = <T extends keyof Tables>(name: T) => ({
+  list: (opts?: ListOptions<T>) => getAll(name, opts),
+  get: (id: string) => getById(name, id),
+  create: (v: Tables[T]["Insert"]) => createRecord(name, v),
+  update: (id: string, v: Tables[T]["Update"]) => updateRecord(name, id, v),
+  remove: (id: string) => deleteRecord(name, id),
+});
 
-export const workoutPlansService = {
-  list: (opts?: ListOptions<"workout_plans">) => getAll("workout_plans", opts),
-  get: (id: string) => getById("workout_plans", id),
-  create: (v: Tables["workout_plans"]["Insert"]) => createRecord("workout_plans", v),
-  update: (id: string, v: Tables["workout_plans"]["Update"]) => updateRecord("workout_plans", id, v),
-  remove: (id: string) => deleteRecord("workout_plans", id),
-};
-
-export const bodyMetricsService = {
-  list: (opts?: ListOptions<"body_metrics">) => getAll("body_metrics", opts),
-  get: (id: string) => getById("body_metrics", id),
-  create: (v: Tables["body_metrics"]["Insert"]) => createRecord("body_metrics", v),
-  update: (id: string, v: Tables["body_metrics"]["Update"]) => updateRecord("body_metrics", id, v),
-  remove: (id: string) => deleteRecord("body_metrics", id),
-};
+export const profilesService = make("profiles");
+export const workoutPlansService = make("workout_plans");
+export const bodyMetricsService = make("body_metrics");
+export const foodItemsService = make("food_items");
+export const exercisesService = make("exercises");
+export const nutritionLogsService = make("nutrition_logs");
+export const waterLogsService = make("water_logs");
+export const exerciseLogsService = make("exercise_logs");
+export const nutritionTargetsService = make("nutrition_targets");
+export const userPreferencesService = make("user_preferences");
